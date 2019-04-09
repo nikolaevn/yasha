@@ -116,13 +116,13 @@ def parse_cli_variables(args):
             pass
         except SyntaxError:
             pass
-        if isinstance(val, str):
-            # Convert foo,bar,baz to list ['foo', 'bar', 'baz'] and
-            # '"foo,bar,baz"' to string 'foo,bar,baz'
-            reader = csv.reader([val], delimiter=',', quotechar='"')
-            val = list(reader)[0]
-            if len(val) == 1:
-                val = val[0]
+        # if isinstance(val, str):
+        #     # Convert foo,bar,baz to list ['foo', 'bar', 'baz'] and
+        #     # '"foo,bar,baz"' to string 'foo,bar,baz'
+        #     reader = csv.reader([val], delimiter=',', quotechar='"')
+        #     val = list(reader)[0]
+        #     if len(val) == 1:
+        #         val = val[0]
         variables[opt] = val
     return variables
 
