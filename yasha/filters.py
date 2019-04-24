@@ -65,7 +65,8 @@ def do_shell(cmd, strip=True, check=True, timeout=2):
         return result.stdout.decode(encoding=ENCODING).strip()
 
 def do_jsonloads(jstring):
-    return json.loads(jstring) if jstring else dict()
+    rv = str(jstring).replace("'", "\"")
+    return json.loads(rv) if rv else dict() 
 
 FILTERS = {
     'env': do_env,
