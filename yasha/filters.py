@@ -25,6 +25,7 @@ THE SOFTWARE.
 import os
 import sys
 import subprocess
+import json
 
 from click import ClickException
 from .yasha import ENCODING
@@ -63,8 +64,12 @@ def do_shell(cmd, strip=True, check=True, timeout=2):
     else:
         return result.stdout.decode(encoding=ENCODING).strip()
 
+def do_jsonloads(jstring):
+    return json.loads(jstring) if jstring else dict()
+
 FILTERS = {
     'env': do_env,
     'shell': do_shell,
     'subprocess': do_subprocess,
+    'jsonloads': do_jsonloads,
 }
